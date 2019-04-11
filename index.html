@@ -3,16 +3,24 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        .chart{
+        .chart {
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
             font-size: 16px;
         }
+        
+        .box {
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 18px;
+        }
     </style>
 </head>
 
 <body>
+    <div class="box">
         <h2> Drug Prices in 10 Mainland China Cities
         </h2>
         <p>To find out drug prices for different cancer treatments in different cities, input information of the targeted caner, chemical name of the medicine and the commercial name of the drug.</p>
@@ -29,9 +37,9 @@
             <li>Zhengzhou</li>
             <li>Chongqing</li>
         </ul> -->
-
-        <iframe src="https://www.google.com/maps/d/embed?mid=1F50LvXXr0SnzQ0h6S4JY4DPqd5EvgRFv" width="640" height="480"></iframe>
-
+        <center>
+            <iframe src="https://www.google.com/maps/d/embed?mid=1F50LvXXr0SnzQ0h6S4JY4DPqd5EvgRFv" width="640" height="480"></iframe>
+        </center>
         <h4 style="font-family:Times New Roman;">Source: <a href="https://baike.qq.com/">腾讯医典</a></h4>
 
         <br>
@@ -112,31 +120,32 @@
         </div>
 
 
+
     </div>
 
     <!DOCTYPE HTML>
     <html>
-    
+
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Highcharts Example</title>
-    
+
         <style type="text/css">
-    
+
         </style>
     </head>
-    
+
     <body>
-    <script src="Highcharts-7.0.3/code/highcharts.js"></script>
-    <script src="Highcharts-7.0.3/code/modules/annotations.js"></script>
-    <script src="Highcharts-7.0.3/code/modules/exporting.js"></script>
-    <script src="Highcharts-7.0.3/code/modules/export-data.js"></script>
-    
+        <script src="Highcharts-7.0.3/code/highcharts.js"></script>
+        <script src="Highcharts-7.0.3/code/modules/annotations.js"></script>
+        <script src="Highcharts-7.0.3/code/modules/exporting.js"></script>
+        <script src="Highcharts-7.0.3/code/modules/export-data.js"></script>
+
         <div id="chart" style="min-width: 310px; max-width: 800px; height: 400px; margin: 0 auto"></div>
-    
-    
-    
+
+
+
         <script type="text/javascript">
             Highcharts.chart('chart', {
                 chart: {
@@ -145,7 +154,7 @@
                 title: {
                     text: '索拉非尼的价格表'
                 },
-    
+
                 xAxis: {
                     categories: ['北京', '沈阳', '福州', '广州', '哈尔滨', '杭州', '上海', '西安', '郑州', '重庆'],
                     title: {
@@ -189,12 +198,12 @@
                 series: [{
                     name: '索拉非尼',
                     data: [12180, 12180, 23280, 12180, 12180, 12180, 11437, 12180, 12180, 12180]
-    
+
                 }]
             });
         </script>
     </body>
-    
+
     </html>
 
 </body>
