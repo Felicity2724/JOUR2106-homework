@@ -6,7 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.7.2/dist/semantic.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.7.2/dist/semantic.min.js"></script>
+   
+    <script>
+        $(function() {
+            $('.ui.slider')
+                .slider({
+                    min: 0,
+                    max: 10,
+                    start: 3.82,
+                    step: 0
+                });
+            $('.ui.dropdown')
+                .dropdown();
+        });
+    </script>
 
     <style>
         .chart {
@@ -65,7 +81,7 @@
         <h2>Generate a graph here:</h2>
 
         Cancer:
-        <select id='Cancer'>
+        <select id='Cancer'  class='ui  dropdown'>
             <option value="甲状腺癌">甲状腺癌</option>
             <option value="结直肠癌">结直肠癌</option>
             <option value="乳腺癌">乳腺癌</option>
@@ -79,7 +95,7 @@
 
 
         <br>Chemical name of the medicine:
-        <select id='Chemical'>
+        <select id='Chemical'  class='ui  dropdown'>
             <option value='埃克替尼'>埃克替尼</option>
             <option value='安罗替尼'>安罗替尼</option>
             <option value='贝伐珠单抗'>贝伐珠单抗</option>
@@ -215,7 +231,7 @@
         
             </select>
         <br> Drug name:
-        <select id='Drug'>
+        <select id='Drug'  class='ui  dropdown'>
                     <option value='拜耳医药多吉美/0.2g'>拜耳医药多吉美/0.2g</option>"
                     <option value='德国默克公司优甲乐/50μg'>德国默克公司优甲乐/50μg</option>"
                     <option value='德国默克公司优甲乐/100μg'>德国默克公司优甲乐/100μg</option>"
