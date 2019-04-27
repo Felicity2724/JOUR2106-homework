@@ -1,506 +1,155 @@
-<html>
-
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-    <style>
-        .chart {
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            font-size: 16px;
-        }
-        
-        .box {
-            max-width: 1000px;
-            margin-left: auto;
-            margin-right: auto;
-            font-size: 18px;
-        }
-        
-        h2 {
-            font-family: 'Lato', sans-serif;
-            font-weight: 400;
-        }
-        
-        p {
-            font-family: "Lato", serif;
-        }
-        
-        body {
-            font-family: "Lato", serif;
-            background-color: #FF3232;
-        }
-    </style>
-</head>
+<!DOCTYPE html>
+<html lang="en">
+<title>Drug Price</title>
+<link rel="shortcut icon" href="https://res.cloudinary.com/hrscywv4p/image/upload/c_limit,fl_lossy,h_64,w_64,q_auto/v1/45082/SINGLE_LOGO_oiwdo4.png" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+<style>
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+        font-family: "Poppins", sans-serif
+    }
+    
+    body {
+        font-size: 16px;
+    }
+    
+    .w3-half img {
+        margin-bottom: -6px;
+        margin-top: 16px;
+        opacity: 0.8;
+        cursor: pointer
+    }
+    
+    .w3-half img:hover {
+        opacity: 1
+    }
+</style>
 
 <body>
-    <div class="box">
-        <h2> Drug Prices in 10 Mainland Chinese Cities</h2>
-        <p>To find out the drug prices for different cancer treatments in different cities, input information of the targeted cancer, chemical name of the medicine and the commercial name of the drug.</p>
-        <p>The 10 mainland cities featured are Beijing, Shenyang, Fuzhou, Guangzhou, Harbin, Hangzhou, Shanghai, Xi'an, Zhengzhou and Chongqing.</p>
-        <!-- <ul>
-            <li>Beijing</li>
-            <li>Shenyang</li>
-            <li>Fuzhou</li>
-            <li>Guangzhou</li>
-            <li>Harbin</li>
-            <li>Hangzhou</li>
-            <li>Shanghai</li>
-            <li>Xi'an</li>
-            <li>Zhengzhou</li>
-            <li>Chongqing</li>
-        </ul> -->
-        <center>
-            <iframe src="https://www.google.com/maps/d/embed?mid=1F50LvXXr0SnzQ0h6S4JY4DPqd5EvgRFv" width="640" height="480"></iframe>
-        </center>
-        <h4 style="font-family:Times New Roman;">Source: <a href="https://baike.qq.com/">腾讯医典</a></h4>
 
-        <br>
-        <h2>Generate a graph here:</h2>
+    <!-- Sidebar/menu -->
+    <nav class="w3-sidebar w3-red w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
+        <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
+        <div class="w3-container">
+            <h3 class="w3-padding-64"><b>国内十城市癌症药物价格一览<br>Drug Prices in 10 Mainland Chinese Cities</b></h3>
 
-        Cancer:
-        <select id='Cancer'>
-            <option value="甲状腺癌">甲状腺癌</option>
-            <option value="结直肠癌">结直肠癌</option>
-            <option value="乳腺癌">乳腺癌</option>
-            <option value="前列腺癌">前列腺癌</option>
-            <option value="宫颈癌">宫颈癌</option>
-            <option value="肺癌">肺癌</option>
-            <option value="胃癌">胃癌</option>
-            <option value="膀胱癌">膀胱癌</option>
-            
-        </select>
+        </div>
+        <div class="w3-bar-block">
+
+            <a href="#showcase" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">关于&nbsp;About</a>
+            <a href="#services" onclick="w3_close()" class="w3-bar-item w3-button w3-hover-white">工具&nbsp;Tool</a>
 
 
-        <br>Chemical name of the medicine:
-        <select id='Chemical'>
-            <option value='埃克替尼'>埃克替尼</option>
-            <option value='安罗替尼'>安罗替尼</option>
-            <option value='贝伐珠单抗'>贝伐珠单抗</option>
-            <option value='多西他赛'>多西他赛</option>
-            <option value='厄洛替尼'>厄洛替尼</option>
-            <option value='吉非替尼'>吉非替尼</option>
-            <option value='吉西他滨'>吉西他滨</option>
-            <option value='甲磺酸奥希替尼'>甲磺酸奥希替尼</option>
-            <option value='卡铂'>卡铂</option>
-            <option value='克唑替尼'>克唑替尼</option>
-            <option value='马来酸阿法替尼'>马来酸阿法替尼</option>
-            <option value='培美曲塞'>培美曲塞</option>
-            <option value='塞瑞替尼'>塞瑞替尼</option>
-            <option value='顺铂'>顺铂</option>
-            <option value='拓扑替康'>拓扑替康</option>
-            <option value='伊立替康'>伊立替康</option>
-            <option value='依托泊苷'>依托泊苷</option>
-            <option value='长春瑞滨'>长春瑞滨</option>
-            <option value='紫杉醇'>紫杉醇</option>
-            
-            <option value='奥沙利铂'>奥沙利铂</option>
-            <option value='博来霉素'>博来霉素</option>
-            <option value='多西他赛'>多西他赛</option>
-            <option value='氟尿嘧啶'>氟尿嘧啶</option>
-            <option value='吉西他滨'>吉西他滨</option>
-            <option value='卡铂'>卡铂</option>
-            <option value='顺铂'>顺铂</option>
-            <option value='拓扑替康'>拓扑替康</option>
-            <option value='伊立替康'>伊立替康</option>
-            <option value='异环磷酰胺'>异环磷酰胺</option>
-            <option value='长春瑞滨'>长春瑞滨</option>
-            <option value='长春新碱'>长春新碱</option>
-            <option value='紫杉醇'>紫杉醇</option>
-            
-            <option value='索拉非尼'>索拉非尼</option>
-            <option value='左甲状腺素钠'>左甲状腺素钠</option>
-            
-            <option value='奥沙利铂'>奥沙利铂</option>
-            <option value='贝伐珠单抗'>贝伐珠单抗</option>
-            <option value='氟尿嘧啶'>氟尿嘧啶</option>
-            <option value='卡培他滨'>卡培他滨</option>
-            <option value='西妥昔单抗'>西妥昔单抗</option>
-            <option value='亚叶酸钙'>亚叶酸钙</option>
-            <option value='伊立替康'>伊立替康</option>
-            
-            <option value='奥沙利铂'>奥沙利铂</option>
-            <option value='表柔比星'>表柔比星</option>
-            <option value='博来霉素'>博来霉素</option>
-            <option value='多柔比星'>多柔比星</option>
-            <option value='多西他赛'>多西他赛</option>
-            <option value='氟尿嘧啶'>氟尿嘧啶</option>
-            <option value='环磷酰胺'>环磷酰胺</option>
-            <option value='吉西他滨'>吉西他滨</option>
-            <option value='卡铂'>卡铂</option>
-            <option value='卡培他滨'>卡培他滨</option>
-            <option value='奈达铂'>奈达铂</option>
-            <option value='顺铂'>顺铂</option>
-            <option value='拓扑替康'>拓扑替康</option>
-            <option value='依托泊苷'>依托泊苷</option>
-            <option value='紫杉醇'>紫杉醇</option>
-            
-            <option value='阿柔比星'>阿柔比星</option>
-            <option value='吡柔比星'>吡柔比星</option>
-            <option value='表柔比星'>表柔比星</option>
-            <option value='多柔比星'>多柔比星</option>
-            <option value='多西他赛'>多西他赛</option>
-            <option value='氟尿嘧啶'>氟尿嘧啶</option>
-            <option value='吉西他滨'>吉西他滨</option>
-            <option value='甲氨蝶呤'>甲氨蝶呤</option>
-            <option value='卡铂'>卡铂</option>
-            <option value='卡介苗'>卡介苗</option>
-            <option value='羟喜树碱'>羟喜树碱</option>
-            <option value='顺铂'>顺铂</option>
-            <option value='丝裂霉素'>丝裂霉素</option>
-            <option value='异环磷酰胺'>异环磷酰胺</option>
-            <option value='长春碱'>长春碱</option>
-            
-            <option value='阿比特龙'>阿比特龙</option>
-            <option value='比卡鲁胺'>比卡鲁胺</option>
-            <option value='醋酸戈舍瑞林'>醋酸戈舍瑞林</option>
-            <option value='醋酸亮丙瑞林'>醋酸亮丙瑞林</option>
-            <option value='多西他赛'>多西他赛</option>
-            <option value='氟他胺'>氟他胺</option>
-            <option value='盐酸米托蒽醌'>盐酸米托蒽醌</option>
-            
-            <option value='阿仑膦酸'>阿仑膦酸</option>
-            <option value='阿那曲唑'>阿那曲唑</option>
-            <option value='昂丹司琼'>昂丹司琼</option>
-            <option value='吡柔比星'>吡柔比星</option>
-            <option value='表柔比星'>表柔比星</option>
-            <option value='地塞米松'>地塞米松</option>
-            <option value='多拉司琼'>多拉司琼</option>
-            <option value='多柔比星'>多柔比星</option>
-            <option value='多西他赛'>多西他赛</option>
-            <option value='氟尿嘧啶'>氟尿嘧啶</option>
-            <option value='氟维司群'>氟维司群</option>
-            <option value='戈舍瑞林'>戈舍瑞林</option>
-            <option value='环磷酰胺'>环磷酰胺</option>
-            <option value='吉西他滨'>吉西他滨</option>
-            <option value='甲氨蝶呤'>甲氨蝶呤</option>
-            <option value='甲地孕酮'>甲地孕酮</option>
-            <option value='甲羟孕酮'>甲羟孕酮</option>
-            <option value='甲氧氯普胺（胃复安）'>甲氧氯普胺（胃复安）</option>
-            <option value='卡铂'>卡铂</option>
-            <option value='卡培他滨'>卡培他滨</option>
-            <option value='拉帕替尼'>拉帕替尼</option>
-            <option value='来曲唑'>来曲唑</option>
-            <option value='粒细胞集落刺激因子'>粒细胞集落刺激因子</option>
-            <option value='亮丙瑞林'>亮丙瑞林</option>
-            <option value='氯丙嗪'>氯丙嗪</option>
-            <option value='米托蒽醌'>米托蒽醌</option>
-            <option value='帕米膦酸'>帕米膦酸</option>
-            <option value='曲妥珠单抗'>曲妥珠单抗</option>
-            <option value='柔红霉素'>柔红霉素</option>
-            <option value='顺铂'>顺铂</option>
-            <option value='他莫昔芬'>他莫昔芬</option>
-            <option value='托瑞米芬'>托瑞米芬</option>
-            <option value='依西美坦'>依西美坦</option>
-            <option value='长春瑞滨'>长春瑞滨</option>
-            <option value='紫杉醇'>紫杉醇</option>
-            <option value='唑来膦酸'>唑来膦酸</option>
-            
-            <option value='阿帕替尼'>阿帕替尼</option>
-            <option value='奥沙利铂'>奥沙利铂</option>
-            <option value='多西他赛'>多西他赛</option>
-            <option value='氟尿嘧啶'>氟尿嘧啶</option>
-            <option value='卡培他滨'>卡培他滨</option>
-            <option value='曲妥珠单抗'>曲妥珠单抗</option>
-            <option value='顺铂'>顺铂</option>
-            <option value='替吉奥'>替吉奥</option>
-            <option value='伊立替康'>伊立替康</option>
-            <option value='紫杉醇'>紫杉醇</option>
-        
-            </select>
-        <br> Drug name:
-        <select id='Drug'>
-                    <option value='拜耳医药多吉美/0.2g'>拜耳医药多吉美/0.2g</option>"
-                    <option value='德国默克公司优甲乐/50μg'>德国默克公司优甲乐/50μg</option>"
-                    <option value='德国默克公司优甲乐/100μg'>德国默克公司优甲乐/100μg</option>"
-                    <option value='美纳里尼雷替斯/50μg'>美纳里尼雷替斯/50μg</option>"
-                    <option value='美纳里尼雷替斯/100μg'>美纳里尼雷替斯/100μg</option>"
-                    <option value='深圳市中联制药加衡/25μg'>深圳市中联制药加衡/25μg</option>"
-                    <option value='深圳市中联制药加衡/50μg'>深圳市中联制药加衡/50μg</option>"
-    
-                    <option value='杨森制药泽珂/250mg'>杨森制药泽珂/250mg</option>"
-                        <option value='阿斯利康康士得/50mg'>阿斯利康康士得/50mg</option>"
-                        <option value='山西振东制药岩列舒/50mg'>山西振东制药岩列舒/50mg</option>"
-                        <option value='上海朝晖药业--/50mg'>上海朝晖药业--/50mg</option>"
-                        <option value='上海朝晖药业--/50mg'>上海朝晖药业--/50mg</option>"
-                        <option value='上海复旦复华药业--/50mg'>上海复旦复华药业--/50mg</option>"
-                        <option value='浙江海正药业--/50mg'>浙江海正药业--/50mg</option>"
-                        <option value='阿斯利康诺雷得/10.8mg'>阿斯利康诺雷得/10.8mg</option>"
-                        <option value='阿斯利康诺雷得/3.6mg'>阿斯利康诺雷得/3.6mg</option>"
-                        <option value='阿特维斯--/0.25g'>阿特维斯--/0.25g</option>"
-                        <option value='江苏天士力帝益药业--/0.25g'>江苏天士力帝益药业--/0.25g</option>"
-                        <option value='默沙东福至尔/0.25g'>默沙东福至尔/0.25g</option>"
-                        <option value='上海复旦复华药业--/0.25g'>上海复旦复华药业--/0.25g</option>"
-                        <option value='北京博恩特药业博恩诺康/3.75mg'>北京博恩特药业博恩诺康/3.75mg</option>"
-                        <option value='上海丽珠制药--/3.75mg'>上海丽珠制药--/3.75mg</option>"
-                        <option value='武田制药抑那通/1.88mg'>武田制药抑那通/1.88mg</option>"
-                        <option value='武田制药抑那通/11.25mg'>武田制药抑那通/11.25mg</option>"
-                        <option value='武田制药抑那通/3.75mg'>武田制药抑那通/3.75mg</option>"
-                        <option value='北京东方协和医药生物技术易优瑞康/0.5ml:20mg'>北京东方协和医药生物技术易优瑞康/0.5ml:20mg</option>"
-                        <option value='北京协和药厂--/0.5ml:20mg'>北京协和药厂--/0.5ml:20mg</option>"
-                        <option value='辰欣药业辰焕/0.5ml:20mg'>辰欣药业辰焕/0.5ml:20mg</option>"
-                        <option value='辰欣药业辰焕/2ml:80mg'>辰欣药业辰焕/2ml:80mg</option>"
-                        <option value='海正辉瑞制药--/0.5ml:20mg'>海正辉瑞制药--/0.5ml:20mg</option>"
-                        <option value='江苏奥赛康药业奥名润/1.0ml:20mg'>江苏奥赛康药业奥名润/1.0ml:20mg</option>"
-                        <option value='江苏恒瑞医药艾素/0.5ml:20mg'>江苏恒瑞医药艾素/0.5ml:20mg</option>"
-                        <option value='江苏恒瑞医药艾素/1.5ml:60mg'>江苏恒瑞医药艾素/1.5ml:60mg</option>"
-                        <option value='江苏恒瑞医药艾素/2ml:80mg'>江苏恒瑞医药艾素/2ml:80mg</option>"
-                        <option value='齐鲁制药多帕菲/0.5ml:20mg'>齐鲁制药多帕菲/0.5ml:20mg</option>"
-                        <option value='齐鲁制药多帕菲/1ml:40mg'>齐鲁制药多帕菲/1ml:40mg</option>"
-                        <option value='齐鲁制药多帕菲/4ml:80mg'>齐鲁制药多帕菲/4ml:80mg</option>"
-                        <option value='赛诺菲安万特医药泰索帝/0.5ml:20mg'>赛诺菲安万特医药泰索帝/0.5ml:20mg</option>"
-                        <option value='上海创诺制药--/0.5ml:20mg'>上海创诺制药--/0.5ml:20mg</option>"
-                        <option value='深圳万乐药业希存/0.5ml:20mg'>深圳万乐药业希存/0.5ml:20mg</option>"
-                        <option value='四川美大康佳乐药业--/1.0ml:20mg'>四川美大康佳乐药业--/1.0ml:20mg</option>"
-                        <option value='四川美大康佳乐药业--/4ml:80mg'>四川美大康佳乐药业--/4ml:80mg</option>"
-                        <option value='四川太极制药--/0.5ml:20mg'>四川太极制药--/0.5ml:20mg</option>"
-                        <option value='扬子江药业天伦/0.5ml:20mg'>扬子江药业天伦/0.5ml:20mg</option>"
-                        <option value='浙江万晟药业斯曲帝/0.5ml:20mg'>浙江万晟药业斯曲帝/0.5ml:20mg</option>"
-                        <option value='四川升和药业米西宁/2ml:2mg'>四川升和药业米西宁/2ml:2mg</option>"
-                        <option value='四川升和药业米西宁/5ml:5mg'>四川升和药业米西宁/5ml:5mg</option>"
-                        <option value='山东罗欣药业--/2ml:2mg'>山东罗欣药业--/2ml:2mg</option>"
-                        <option value='山东罗欣药业--/5mg'>山东罗欣药业--/5mg</option>"
-    
-                        <option value='翰晖制药--/15mg'>翰晖制药--/15mg</option>"
-                        <option value='海正辉瑞制药--/1.5万博来霉素单位'>海正辉瑞制药--/1.5万博来霉素单位</option>"
-                        <option value='日本化药--/15mg'>日本化药--/15mg</option>"
-    
-                        <option value='辰欣药业辰雅/100ml'>辰欣药业辰雅/100ml</option>"
-                        <option value='辰欣药业天地平/50mg'>辰欣药业天地平/50mg</option>"
-    
-                     
-    
-                  </select>
-        <br>
+        </div>
+    </nav>
+
+    <!-- Top menu on small screens -->
+    <header class="w3-container w3-top w3-hide-large w3-red w3-xlarge w3-padding">
+        <a href="javascript:void(0)" class="w3-button w3-red w3-margin-right" onclick="w3_open()">☰</a>
+        <span>Company Name</span>
+    </header>
+
+    <!-- Overlay effect when opening sidebar on small screens -->
+    <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-main" style="margin-left:340px;margin-right:40px">
+
+        <!-- Header -->
+        <div class="w3-container" style="margin-top:80px" id="showcase">
+
+            <h1 class="w3-xxxlarge w3-text-red"><b>关于&nbsp;About</b></h1>
+            <hr style="width:50px;border:5px solid red" class="w3-round">
+
+            <div data-packed="false" data-min-height="396" class="txtNew" id="WRchTxt3" style="width: 543px; min-height: 396px; pointer-events: none;">
+                <div class="p1">
+                    <p class="font_8"><span style="font-family:tahoma,tahoma-w01-regular,tahoma-w02-regular,tahoma-w10-regular,tahoma-w15--regular,tahoma-w99-regular,sans-serif;"><span class="color_11">&nbsp; &nbsp; &nbsp; 据中国官方媒体新华社报道，自2018年5月以来，由于政府提高了所有普通药物的进口关税，包括生物碱类药物在内的抗癌药物价格下降。</span></span>
+                    </p>
+
+                    <p class="font_8"><span style="font-family:tahoma,tahoma-w01-regular,tahoma-w02-regular,tahoma-w10-regular,tahoma-w15--regular,tahoma-w99-regular,sans-serif;"><span class="color_11">&nbsp; &nbsp; &nbsp; 新华社特别指出，在湖南省，每瓶赫赛汀的价格从17600元大幅下降到7600元。从我们的数据可视化中发现，项目覆盖的所有城市都是如此，上海最便宜的价格为7270.16元。</span></span>
+                    </p>
+
+                    <p class="font_8"><span style="font-family:tahoma,tahoma-w01-regular,tahoma-w02-regular,tahoma-w10-regular,tahoma-w15--regular,tahoma-w99-regular,sans-serif;"><span class="color_11">&#8203;&nbsp; &nbsp; &nbsp;&nbsp;</span></span><span style="font-family:tahoma,tahoma-w01-regular,tahoma-w02-regular,tahoma-w10-regular,tahoma-w15--regular,tahoma-w99-regular,sans-serif;"><span class="color_11">了解不同城市不同癌症治疗药物的价格，输入目标癌症的信息，药物的化学名称和药物的商业名称。</span></span>
+                    </p>
+
+                    <p class="font_8"><span style="font-family:tahoma,tahoma-w01-regular,tahoma-w02-regular,tahoma-w10-regular,tahoma-w15--regular,tahoma-w99-regular,sans-serif;"><span class="color_11">&#8203;&nbsp; &nbsp; &nbsp;&nbsp;</span></span><span style="font-family:tahoma,tahoma-w01-regular,tahoma-w02-regular,tahoma-w10-regular,tahoma-w15--regular,tahoma-w99-regular,sans-serif;"><span class="color_11">北京、沈阳、福州、广州、哈尔滨、杭州、上海、西安、郑州和重庆是上榜的10个内地城市。</span></span>
+                    </p>
+                </div>
+
+                <div class="p2">
+                    <p class="font_8" style="font-size:14px;"><span style="font-size:14px;"><span style="font-family:verdana,geneva,sans-serif;"><span class="color_11">According to Chinese state media Xinhua, the prices of cancer drugs, including the alkaloid-based ones, were reduced because &nbsp;the government has lifted import tariffs on all common drugs since May, 2018.</span></span>
+                        </span>
+                    </p>
 
 
-        <space id="result" type="text"></space>
+                    <p class="font_8" style="font-size:14px;"><span class="color_11"><span style="font-size:14px;"><span style="font-family:verdana,geneva,sans-serif;">In particular, Xinhua pointed out that the price of each vial of Herceptin decreased significantly from 17,600 yuan to 7,600 yuan in Hunan Province. From our data visualization, it is found that it is true in all the cities covered in the project with the cheapest price being 7270.16 yuan in Shanghai.</span></span>
+                        </span>
+                    </p>
 
 
-        <script src="Highcharts-7.0.3/code/highcharts.js"></script>
-        <script src="Highcharts-7.0.3/code/modules/exporting.js"></script>
-        <script src="Highcharts-7.0.3/code/modules/export-data.js"></script>
 
-        <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+                    <p class="font_8" style="font-size:14px;"><span style="font-size:14px;"><span class="color_11"><span style="font-family:verdana,geneva,sans-serif;">To find out the drug prices for different cancer treatments in different cities, input information of the targeted cancer, chemical name of the medicine and the commercial name of the drug.</span></span>
+                        </span>
+                    </p>
 
-        <script type="text/javascript">
-            dic = {
-                '前列腺癌': {
-                    '阿比特龙': {
-                        '杨森制药泽珂/250mg': [17390, 17390, 36923.5, 17390, 17390, 17390, 16268.4, 17390, 17390, 17390],
-                    },
-                    '比卡鲁胺': {
-                        '阿斯利康康士得/50mg': [1166.54, '-', 1143.87, '-', 43.56, 1166.54, 1248.27, 41.11, '-', '-'],
-                        '山西振东制药岩列舒/50mg': [867.32, 1035, '-', 28.91, 31.97, '-', 923.16, 28.91, 867.32, 1035, '-', '-'],
-                        '浙江海正药业--/50mg': [576, '-', '-', 20.49, '-', 639.9, 623, 28.49, '-', 692.79],
-                    },
-                    '醋酸戈舍瑞林': {
-                        '阿斯利康诺雷得/10.8mg': [4369.21, 4854, '-', '-', 4565.86, 4603.26, '-', 4244.3, '-', '-']
-                    },
-                    '氟他胺': {
-                        '阿特维斯--/0.25g': [399.96, 165.51, '-', '-', '-', '-', 474, '-', '-', 164.33],
-                        '江苏天士力帝益药业--/0.25g': [202, 271.3, 4.37, 4.26, '-', 244.17, 222.89, 3.99, '-', '-'],
-                    },
-                    '醋酸亮丙瑞林': {
-                        '北京博恩特药业博恩诺康/3.75mg': [1305, '-', '-', 1416.65, '-', 1531.8, 1386.66, 1305, '-', 1800.77],
-                        '上海丽珠制药--/3.75mg': [1311, '-', 1307.25, 1339, '-', 1311.04, 1409.37, 1311, '-', 1514],
-                        '武田制药抑那通/1.88mg': [1059.03, 1139, 1050, 1114.78, '-', '-', '-', '-', '-', 1140],
-                        '武田制药抑那通/11.25mg': [4385.37, 4421.43, 4132, '-', '-', '-', 4652.01, '-', '-', 4579.71],
-                        '武田制药抑那通/3.75mg': [1781.99, '-', 1700.03, 1745, '-', 1782, 1864.07, 1781.99, '-', 1975.08],
-                    },
-                    '多西他赛': {
-                        '北京东方协和医药生物技术易优瑞康/0.5ml:20mg': [170, '-', 93.82, '-', '-', '-', '-', '-', '-', '-'],
-                        '北京协和药厂--/0.5ml:20mg': [311.42, '-', '-', '-', '-', '-', '-', '-', '-', 400.9],
-                        '辰欣药业辰焕/0.5ml:20mg': [236, '-', 93.82, 474.83, 163.9, '-', 283.26, '-', '-', 375.01],
-                        '辰欣药业辰焕/2ml:80mg': [780.3, '-', '-', '-', '-', '-', '-', '-', '-', 1083.77],
-                        '海正辉瑞制药--/0.5ml:20mg': [168, '-', '-', '-', '-', '-', 208.18, 312.93, '-', '-'],
-                        '江苏奥赛康药业奥名润/1.0ml:20mg': ['-', '-', 93.82, '-', 134.5, '-', 283.19, 290.95, '-', 312.62],
-                        '江苏恒瑞医药艾素/0.5ml:20mg': [320, '-', 320, '-', 404, '-', 339.27, 410, '-', 422.46],
-                        '江苏恒瑞医药艾素/1.5ml:60mg': [652.96, 1072.6, '-', 730.77, 1027.86, '-', 701.68, '-', '-', 979.57],
-                        '江苏恒瑞医药艾素/2ml:80mg': [1004.61, 1431, '-', '-', '-', '-', '-', '-', '-', '-'],
-                        '齐鲁制药多帕菲/0.5ml:20mg': [123, '-', 93.82, '-', '-', '-', 278.96, 335, '-', 346.28],
-                        '齐鲁制药多帕菲/1ml:40mg': [263.72, '-', '-', '-', 325, '-', 497.03, '-', '-', 588.67],
-                        '齐鲁制药多帕菲/4ml:80mg': [739.8, '-', '-', '-', '-', '-', 1062.96, '-', '-', 1000.74],
-                        '赛诺菲安万特医药泰索帝/0.5ml:20mg': [1449.06, '-', 320, '-', 1503.61, '-', 1511.73, 1527, '-', 1527],
-                        '上海创诺制药--/0.5ml:20mg': [115, '-', 93.82, 98, '-', '-', '-', '-', '-', 285.41],
-                        '深圳万乐药业希存/0.5ml:20mg': [269.67, '-', '-', '-', '-', '-', 322.95, 359.96, '-', 371.05],
-                        '四川美大康佳乐药业--/1.0ml:20mg': [790, 957, '-', 790, '-', '-', '-', '-', '-', 793.04],
-                        '四川美大康佳乐药业--/4ml:80mg': [2291.89, 2765.73, '-', 2283.1, '-', '-', '-', '-', '-', 2291.89],
-                        '四川太极制药--/0.5ml:20mg': [158.63, '-', '-', '-', '-', '-', '-', '-', '-', 420.3],
-                        '扬子江药业天伦/0.5ml:20mg': [284, 409.21, '-', '-', '-', '-', '-', 320, '-', 390.51],
-                        '浙江万晟药业斯曲帝/0.5ml:20mg': [170, '-', '-', '-', '-', '-', '-', '-', '-', 363.48],
-                    },
-                    '盐酸米托蒽醌': {
-                        '四川升和药业米西宁/2ml:2mg': [19.34, 19.54, 16.99, 19.27, '-', '-', 20.15, 19.22, '-', 20.34],
-                        '四川升和药业米西宁/5ml:5mg': ['-', 40.11, 16.99, 38.86, '-', '-', '-', '-', '-', 40.95],
-                        '山东罗欣药业--/2ml:2mg': ['-', '-', 16.99, 25.7, '-', 38.82, 31.14, '-', '-', '-'],
-                        '山东罗欣药业--/5mg': ['-', '-', '-', 25.7, '-', 38.82, 31.14, '-', '-', '-'],
-                        '江苏奥赛康药业奥麦/5mg': ['-', '-', '-', 28.27, '-', '-', 28.91, '-', '-', 36.99],
-                    },
-                },
-                '甲状腺癌': {
+                    <p class="font_8" style="font-size:14px;"><span style="font-size:14px;"><span class="color_11"><span style="font-family:verdana,geneva,sans-serif;">The 10 mainland cities featured are Beijing, Shenyang, Fuzhou, Guangzhou, Harbin, Hangzhou, Shanghai, Xi'an, Zhengzhou and Chongqing.</span></span>
+                        </span>
+                    </p>
+                </div>
+            </div>
 
-                    '索拉非尼': {
-                        '拜耳医药多吉美/0.2g': [12180, 12180, 23280, 12180, 12180, 12180, 11437.2, 12180, 12180, 12180]
-                    },
-                    '左甲状腺素钠': {
-                        '德国默克公司优甲乐/100μg': [43.62, 57.56, 43.62, '-', '-', 43.62, '-', 48.3, '-', '-'],
-                        '德国默克公司优甲乐/50μg': [25.65, 33.82, 25.65, '-', 33.83, 25.65, 27.82, 27, '-', '-'],
-                        '美纳里尼雷替斯/100μg': [18.22, 24.3, 0.23, '-', '-', 21.12, '-', 22.3, '-', 24.16],
+        </div>
+        <iframe aria-hidden="true" frameborder="0" style=" width: 100%; height: 350px; top: 0px; left: 0px; border: 0;" src="https://www.google.com/maps/d/embed?mid=1F50LvXXr0SnzQ0h6S4JY4DPqd5EvgRFv" width="640" height="480"></iframe>
 
-                    },
+        <div id="modal01" class="w3-modal w3-black" style="padding-top:0" onclick="this.style.display='none'">
+            <span class="w3-button w3-black w3-xxlarge w3-display-topright">×</span>
+            <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+                <img id="img01" class="w3-image">
+                <p id="caption"></p>
+            </div>
+        </div>
 
-                },
-                '宫颈癌': {
-                    '博来霉素': {
-                        '翰晖制药--/15mg': ['-', '-', 121.3, '-', '-', '-', '-', '-', '-', '-'],
-                        '海正辉瑞制药--/1.5万博来霉素单位': ['-', '-', '-', 129.38, '-', '-', '-', '-', '-', '-'],
-                        '日本化药--/15mg': ['-', '-', '-', '-', '-', 154.48, 161.8, 176.14, '-', 165.21],
-                    },
+        <!-- Services -->
+        <div class="w3-container" id="services" style="margin-top:75px;height:100%">
+            <h1 class="w3-xxxlarge w3-text-red"><b>工具&nbsp;Tool</b></h1>
+            <hr style="width:100px;border:5px solid red" class="w3-round">
+            <div style="height:200%;border:0"><iframe frameborder="0" width="100%" height=500px scrolling="auto" src="https://felicity2724.github.io/JOUR2106-homework/test-interaction.html"></iframe></div>
+        </div>
 
-                    '奥沙利铂': {
-                        '辰欣药业辰雅/100ml': [266.87, 360, 62.13, '-', '-', '-', 292.07, 296.52, '-', 296.52],
-
-                    },
-
-                }
+        <!-- Designers -->
 
 
-            };
 
-            function onSelectCancer() {
-                console.log(Cancer.value);
-                console.log(Chemical.value);
-                console.log(Drug.value);
-                console.log('onSelectCancer')
 
-                console.log(dic[Cancer.value]);
 
-                Chemical.length = 0;
-
-                for (k in dic[Cancer.value]) {
-                    console.log('key:')
-                    console.log(k)
-                    Chemical.appendChild(new Option(k, k))
-                }
-
-                onSelectChemical()
+        <script>
+            // Script to open and close sidebar
+            function w3_open() {
+                document.getElementById("mySidebar").style.display = "block";
+                document.getElementById("myOverlay").style.display = "block";
             }
 
-            document.getElementById("Cancer").addEventListener('change', onSelectCancer)
-
-
-            function onSelectChemical() {
-                console.log(Cancer.value);
-                console.log(Chemical.value);
-                console.log(Drug.value);
-                console.log('onSelectChemical')
-
-                console.log(dic[Cancer.value][Chemical.value]);
-
-                Drug.length = 0;
-
-                for (k in dic[Cancer.value][Chemical.value]) {
-                    console.log('key:')
-                    console.log(k)
-                    Drug.appendChild(new Option(k, k))
-                }
-
-                onSelectDrug()
-
+            function w3_close() {
+                document.getElementById("mySidebar").style.display = "none";
+                document.getElementById("myOverlay").style.display = "none";
             }
 
-            document.getElementById("Chemical").addEventListener('change', onSelectChemical)
-
-
-            function onSelectDrug() {
-                console.log(Cancer.value);
-                console.log(Chemical.value);
-                console.log(Drug.value);
-
-                result = dic[Cancer.value][Chemical.value][Drug.value]
-                document.getElementById("result").value = result
-                plot(result);
-
-                console.log('here');
+            // Modal Image Gallery
+            function onClick(element) {
+                document.getElementById("img01").src = element.src;
+                document.getElementById("modal01").style.display = "block";
+                var captionText = document.getElementById("caption");
+                captionText.innerHTML = element.alt;
             }
-
-            // document.getElementById("Cancer").addEventListener('change', onSelect)
-            // document.getElementById("Chemical").addEventListener('change', onSelect)
-            document.getElementById("Drug").addEventListener('change', onSelectDrug)
-                // document.getElementById("Cancer").addEventListener('click', onSelect)
-                // document.getElementById("Chemical").addEventListener('click', onSelect)
-                // document.getElementById("Drug").addEventListener('click', onSelect)
-
-
-            function calculate() {
-
-                var a = document.getElementById("Cancer").value
-                    // alert(Cancer)
-                console.log(a)
-                var b = document.getElementById("Chemical").value
-                    // alert(Chemical)
-                console.log(b)
-                var c = document.getElementById("drug").value
-                    // alert(drug)
-                console.log(c)
-
-                result = dic[a][b][c]
-                console.log(result);
-                document.getElementById("result").value = result
-                plot(result);
-            }
-
-            function plot(data) {
-                Highcharts.chart('container', {
-                    chart: {
-                        type: 'column'
-                    },
-                    title: {
-                        text: ''
-                    },
-                    subtitle: {
-                        text: '来源：腾讯医典'
-                    },
-                    xAxis: {
-                        categories: ['北京', '沈阳', '福州', '广州', '哈尔滨', '杭州', '上海', '西安', '郑州', '重庆']
-                    },
-                    yAxis: {
-                        title: {
-                            text: '价格 (元)'
-                        }
-                    },
-                    plotOptions: {
-                        line: {
-                            dataLabels: {
-                                enabled: true
-                            },
-                            enableMouseTracking: false
-                        }
-                    },
-                    series: [{
-                        name: Drug.value,
-                        data: data
-                    }]
-                });
-            }
-
-            // plot([121800, 12180, 23280, 12180, 12180, 12180, 11437.2, 12180, 12180, 12180])
-
-
-
-
-            onSelectCancer();
         </script>
 
-
 </body>
-
 
 </html>
