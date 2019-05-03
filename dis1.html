@@ -1,0 +1,139 @@
+﻿<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Highcharts Example</title>
+
+    <style type="text/css">
+        #container {
+            min-width: 310px;
+            max-width: 800px;
+            height: 400px;
+            bottom: 0
+        }
+        
+        body {
+            bottom: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="Highcharts-7.0.3/code/highcharts.js"></script>
+    <script src="Highcharts-7.0.3/code/modules/series-label.js"></script>
+    <script src="Highcharts-7.0.3/code/modules/exporting.js"></script>
+    <script src="Highcharts-7.0.3/code/modules/export-data.js"></script>
+
+    <div id="container"></div>
+
+
+
+    <script type="text/javascript">
+        Highcharts.chart('container', {
+
+            title: {
+                text: '部分癌症药物价格对比（元）：北京V.S.重庆'
+            },
+
+
+            yAxis: {
+                title: {
+                    text: null
+                },
+                gridLineColor: '#FFFFFF',
+                labels: {
+                    enabled: false,
+                },
+            },
+            xAxis: {
+
+                type: 'category',
+                categories: ['北京', '重庆'],
+                tickmarkPlacement: 'on'
+
+            },
+
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'middle'
+            },
+
+
+
+            series: [{
+                name: '结直肠癌-奥沙利铂-齐鲁制药--/0.1g',
+                data: [107.86, 292.55],
+                showInLegend: false
+            }, {
+                name: '结直肠癌-奥沙利铂-哈药集团生物工程--/50mg',
+                data: [45, 125.41],
+                showInLegend: false
+            }, {
+                name: '结直肠癌-奥沙利铂-江苏奥赛康药业奥正南/50mg',
+                data: [56, 214.61],
+                showInLegend: false
+            }, {
+                name: '结直肠癌-奥沙利铂-鲁南新时代佳力/50mg',
+                data: [53.86, 182.09],
+                showInLegend: false
+            }, {
+                name: '结直肠癌-奥沙利铂-南京制药厂奥铂/50mg',
+                data: [54.5, 226.61],
+                showInLegend: false
+            }, {
+                name: '结直肠癌-奥沙利铂-齐鲁制药--/50mg',
+                data: [40.6, 172.09],
+                showInLegend: false
+            }, {
+                name: '结直肠癌-奥沙利铂-扬子江药业帕奇/50mg',
+                data: [97.11, 277.66],
+                showInLegend: false
+            }, {
+                name: '结直肠癌-奥沙利铂-正大天晴药业--/50mg',
+                data: [45, 182.09],
+                showInLegend: false
+            }, {
+                name: '结直肠癌-氟尿嘧啶-华北制药--/0.004',
+                data: [145.8, 150],
+                showInLegend: false
+            }, {
+                name: '结直肠癌-卡培他滨-江苏恒瑞医药艾滨/0.15g',
+                data: [91, 92.26],
+                showInLegend: false
+            }, {
+                name: '结直肠癌-卡培他滨-江苏恒瑞医药艾滨/0.5g',
+                data: [142.06, 193.12],
+                showInLegend: false
+            }, {
+                name: '结直肠癌-卡培他滨-齐鲁制药--/0.5g',
+                data: [198, 229.59],
+                showInLegend: false
+            }, {
+                name: '结直肠癌-卡培他滨-正大天晴药业--/0.5g',
+                data: [98.99, 235.47],
+                showInLegend: false
+            }, ],
+
+            responsive: {
+                rules: [{
+                    condition: {
+                        maxWidth: 500
+                    },
+                    chartOptions: {
+                        legend: {
+                            layout: 'horizontal',
+                            align: 'center',
+                            verticalAlign: 'bottom'
+                        }
+                    }
+                }]
+            }
+
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,131 @@
+﻿<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Highcharts Example</title>
+
+    <style type="text/css">
+
+    </style>
+</head>
+
+<body>
+    <script src="Highcharts-7.0.3/code/highcharts.js"></script>
+    <script src="Highcharts-7.0.3/code/modules/exporting.js"></script>
+
+    <div id="container" style="min-width: 310px; height: 400px; max-width: 800px; margin: 0 auto"></div>
+
+
+
+    <script type="text/javascript">
+        Highcharts.chart('container', {
+            chart: {
+                type: 'scatter',
+                zoomType: 'xy'
+            },
+            title: {
+                text: '部分癌症药物价格对比（北京）：国产V.S.进口 '
+            },
+
+            xAxis: {
+                title: {
+                    enabled: true,
+
+                },
+                type: 'category',
+                categories: ['甲状腺癌', '结直肠癌', '前列腺癌', '胃癌', '宫颈癌'],
+            },
+            yAxis: {
+                title: {
+                    text: '价格（元）'
+                }
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'left',
+                verticalAlign: 'top',
+                x: 100,
+                y: 70,
+                floating: true,
+                backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF',
+                borderWidth: 1
+            },
+            plotOptions: {
+                scatter: {
+                    marker: {
+                        radius: 5,
+                        states: {
+                            hover: {
+                                enabled: true,
+                                lineColor: 'rgb(100,100,100)'
+                            }
+                        }
+                    },
+                    states: {
+                        hover: {
+                            marker: {
+                                enabled: false
+                            }
+                        }
+                    },
+                    tooltip: {
+                        headerFormat: '<b>{series.name}</b><br>',
+                        pointFormat: '{point.x} , {point.y} 元'
+                    }
+                }
+            },
+            series: [{
+                name: '国产',
+                color: 'rgba(223, 83, 83, .5)',
+                data: [
+                    ['甲状腺癌', 18],
+                    ['结直肠癌', 39.33],
+                    ['结直肠癌', 26.5],
+                    ['结直肠癌', 471.67],
+                    ['结直肠癌', 466],
+                    ['结直肠癌', 352],
+                    ['前列腺癌', 867.32],
+                    ['前列腺癌', 415.8],
+                    ['前列腺癌', 202],
+                    ['前列腺癌', 236],
+                    ['前列腺癌', 320],
+                    ['胃癌', 320],
+                    ['胃癌', 123],
+                    ['胃癌', 208.17],
+                    ['胃癌', 70],
+                    ['胃癌', 139.78],
+                    ['宫颈癌', 471.67],
+                    ['宫颈癌', 466],
+                    ['宫颈癌', 97.8],
+                    ['宫颈癌', 118],
+                    ['宫颈癌', 351]
+                ]
+
+            }, {
+                name: '进口',
+                color: 'rgba(119, 152, 191, .5)',
+                data: [
+                    ['甲状腺癌', 11.7],
+                    ['结直肠癌', 77.6],
+                    ['结直肠癌', 1175.15],
+                    ['前列腺癌', 1166.54],
+                    ['前列腺癌', 399.96],
+                    ['前列腺癌', 1122.3],
+                    ['前列腺癌', 168],
+                    ['前列腺癌', 1449.06],
+                    ['胃癌', 168],
+                    ['胃癌', 1449.06],
+                    ['胃癌', 788.29],
+                    ['胃癌', 793],
+                    ['宫颈癌', 1175.15],
+                    ['宫颈癌', 285.83],
+                    ['宫颈癌', 178.5]
+                ]
+            }]
+        });
+    </script>
+</body>
+
+</html>
