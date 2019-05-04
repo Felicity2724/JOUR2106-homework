@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Highcharts Example</title>
+
+    <style type="text/css">
+        #container {
+            min-width: 310px;
+            max-width: 800px;
+            height: 400px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="Highcharts-7.0.3/code/highcharts.js"></script>
+    <script src="Highcharts-7.0.3/code/highcharts-more.js"></script>
+    <script src="Highcharts-7.0.3/code/modules/exporting.js"></script>
+    <script src="Highcharts-7.0.3/code/modules/export-data.js"></script>
+
+    <div id="container"></div>
+
+
+
+    <script type="text/javascript">
+        Highcharts.chart('container', {
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: '部分癌症就诊支出（元）'
+            },
+            subtitle: {
+                text: '来源：<a href="http://www.cjcsysu.cn/enpdf/bmc/2017/306%20s40880-017-0209-4.pdf">The Lancet</a>'
+            },
+            colors: ['#B0C4DE', '#B0C4DE', '#B0C4DE', '#B0C4DE', '#FF6347'],
+            xAxis: {
+                crosshair: true,
+                labels: {
+                    style: {
+                        fontSize: '14px'
+                    }
+                },
+                type: 'category'
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: '费用 (元)'
+                },
+                plotLines: [{
+                    color: '#FF6347', //线的颜色，定义为红色
+                    dashStyle: 'longdashdot', //默认值，这里定义为实线
+                    value: 54557.19, //定义在那个值上显示标示线，这里是在x轴上刻度为3的值处垂直化一条线
+                    width: 1, //标示线的宽度，2px
+                    label: {
+                        text: '患者家庭年均收入:54557.19元', //标签的内容
+                        align: 'left', //标签的水平位置，水平居左,默认是水平居中center
+                        x: 10 //标签相对于被定位的位置水平偏移的像素，重新定位，水平居左10px
+                    },
+                    zIndex: 10,
+                }]
+            },
+            tooltip: {
+                valueSuffix: ' 元'
+            },
+            series: [{
+                name: '费用',
+                colorByPoint: true,
+                data: [
+                    ['结直肠癌', 69586.25],
+                    ['食管癌', 66594.38],
+                    ['肺癌', 64196.84],
+                    ['胃癌', 62696.08],
+                    ['平均支出', 61732.6],
+                    ['肝癌', 54943.85],
+                    ['乳腺癌', 54194.79],
+                ],
+                showInLegend: false
+            }]
+        });
+    </script>
+</body>
+
+</html>
